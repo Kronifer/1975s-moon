@@ -61,5 +61,13 @@ def outsidesearch():
      """)
      set_context('outchoice')
 
+@when('check the internet', context='breakchoice')
+@when('look on the internet', context='breakchoice')
+@when('scour the internet for ideas', context='breakchoice')
+def internetcheck():
+     say("""
+     You check the internet for game ideas. You start scouring forums
+     for game developers, articles about space, everything.
 
+     Then, you decide. Your game is going to be about an
 start()
