@@ -1,6 +1,8 @@
 from adventurelib import *
 
-intropod = Room ("""
+intropod = Room ("See intro")
+
+say("""
 You're in your space pod, on Mars. 
 
 You've been dreaming about going to the moon, and now you might get the chance.
@@ -11,14 +13,26 @@ The challenge is to develop your own space-based game, about going to the moon. 
 dabbled with coding, and think you've got a chance of winning. All you have to do is *wake up*.
 """)
 
-
-
 current_room = intropod
 
-@when('wake up')
+set_context('asleep')
+
+@when('wake up', context='asleep')
 def wup():
      global current_room
+     say("""
+     You wake up, ready to start the day off. But, you decide it's a good idea to *have breakfast*."""
+     )
+     set_context('intropod')
 
-start("""
-a
-""")
+@when('have breakfast', context='intropod')
+def breakfasttime():
+     say("""
+     You head into the kitchen, and start cooking up some eggs and toast.
+
+     As you cook, you think about the contest, and about the moon. The moons always been a dream of yours.
+
+     As your breakfast finishes, you decide you could either *eat it*, or go *find a style of game to make*.
+     """)
+start()
+
