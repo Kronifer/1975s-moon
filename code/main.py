@@ -41,7 +41,25 @@ def breakcook():
      say("""
      You throw some bacon and eggs on the frying pan,
      and put bread in the toaster. Your breakfast is ready soon enough.
+
+     Soon, you're done eating, and you decide to either scour the internet,
+     or go outside for inspiration for your game.
      """)
+     set_context('breakchoice')
+@when('go outside', context='breakchoice')
+@when('head outside', context='breakchoice')
+@when('go outside for inspiration', context='breakchoice')
+@when('go outside for inspiration for your game', context='breakchoice')
+def outsidesearch():
+     say("""
+     You head outside to find some game inspiration. You watch kids playing,
+     hear teenagers fantasize about space, adults work on theoretical rocket designs.
 
-start(help=False)
+     Then it hits you. Your game is going to be about a child, who builds a 
+     spaceship to fly to the moon. But you don't know what genre of game
+     you want to make. Should you decide on your own, or leave it to chance?
+     """)
+     set_context('outchoice')
 
+
+start()
