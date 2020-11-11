@@ -69,5 +69,10 @@ def internetcheck():
      You check the internet for game ideas. You start scouring forums
      for game developers, articles about space, everything.
 
-     Then, you decide. Your game is going to be about an
+     Then, you decide. Your game is going to be about an astronaut
+     who's stuck on the moon, trying to get off. But what about the genre?
+     Platformer, shooter, roguelike? Do you choose yourself, or leave it to chance?
+     """)
+     set_context('intchoice')
+
 start()
