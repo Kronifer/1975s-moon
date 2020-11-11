@@ -1,38 +1,47 @@
 from adventurelib import *
 
-intropod = Room ("See intro")
-
 say("""
-You're in your space pod, on Mars. 
+Welcome to the Moon of 1975! This is a game about making a game.
 
-You've been dreaming about going to the moon, and now you might get the chance.
-You see, you're a gamer, and play a game called "To the moon", a game about space exploraton. 
-The devs have announced a contest called "Moonshot". 
+The goal of the game is to win a game dev contest about the moon.
 
-The challenge is to develop your own space-based game, about going to the moon. You've
-dabbled with coding, and think you've got a chance of winning. All you have to do is *wake up*.
+To start the game, use the wake up command.
 """)
 
-current_room = intropod
+set_context("start")
 
-set_context('asleep')
-
-@when('wake up', context='asleep')
+@when('wake up', context="start")
 def wup():
-     global current_room
      say("""
-     You wake up, ready to start the day off. But, you decide it's a good idea to *have breakfast*."""
-     )
-     set_context('intropod')
+     You wake up, ready to start the new day. You 
+     went to bed last night thinking about this
+     game jam you heard of, called Moonshot.
 
-@when('have breakfast', context='intropod')
-def breakfasttime():
-     say("""
-     You head into the kitchen, and start cooking up some eggs and toast.
-
-     As you cook, you think about the contest, and about the moon. The moons always been a dream of yours.
-
-     As your breakfast finishes, you decide you could either *eat it*, or go *find a style of game to make*.
+     The prize for winning is an all-expenses paid
+     trip to the Moon, a place you've always dreamed
+     of going. But, before you do any work, you might 
+     want to make some breakfast. To do that, just head into the kitchen.
      """)
-start()
+     set_context('kitchentime')
+
+@when('head into the kitchen', context='kitchentime')
+@when('go into the kitchen', context='kitchentime')
+def gointokitchen():
+     say("""
+     You head into the kitchen, thinking about what to make.
+
+     You decide it's a good time to start cooking breakfast.
+     """)
+
+     set_context('cookbreakfast')
+
+@when('start cooking breakfast', context='cookbreakfast')
+@when('cook breakfast', context='cookbreakfast')
+def breakcook():
+     say("""
+     You throw some bacon and eggs on the frying pan,
+     and put bread in the toaster. Your breakfast is ready soon enough.
+     """)
+
+start(help=False)
 
